@@ -7,9 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    @guest
-    <p>Ciao utente non autenticato</p>
-    @endguest
-    <p>Complimenti, sei un utente registrato</p>
+    @if(isset($user))
+
+    <p>Ciao {{$user->name}}!</p>
+
+    @else
+
+    <p>Ciao Utente!</p>
+
+    @endif
+
 </body>
 </html>

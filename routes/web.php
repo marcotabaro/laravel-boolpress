@@ -16,15 +16,17 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::get('home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
 Route::prefix('restricted-zone')->middleware('auth')->group(function(){
-    Route::resource('hello', 'TestController');
+    Route::get('hello', 'TestController@logged');
 });
 
 Route::prefix('free-zone')->group(function(){
-    Route::resource('hello', 'TestController');
+    Route::get('hello', 'TestController@guest');
 });
