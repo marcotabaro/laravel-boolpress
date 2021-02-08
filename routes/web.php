@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +21,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::prefix('restricted-zone')->middleware('auth')->group(function(){
+    Route::resource('hello', 'TestController');
+});
+
+Route::prefix('free-zone')->group(function(){
+    Route::resource('hello', 'TestController');
+});
