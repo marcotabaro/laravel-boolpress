@@ -10,14 +10,15 @@ class TestController extends Controller
 {
     public function guest(){
 
-        $user = Auth::user();
         return view('auth.hello');
     }
 
     public function logged(){
-
-        $user = Auth::user();
-
+        if(Auth::check()){
+            $user = Auth::user();
+        } else {
+            abort(401);
+        }
         return view('auth.hello', compact('user'));
     }
 }
