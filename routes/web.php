@@ -25,3 +25,5 @@ Auth::routes();
 
     Route::get('restricted-zone/hello', 'TestController@logged');
     Route::get('free-zone/hello', 'TestController@guest');
+
+    
