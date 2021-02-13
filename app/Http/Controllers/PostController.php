@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+
 use App\Http\Requests\PostRequest;
 use App\Post;
-use Illuminate\Support\Facades\Auth;
+use App\Category;
+
+
 
 
 class PostController extends Controller
@@ -38,12 +43,19 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        $data = $request->validate();
+        $data = $request->validated();
 
-        $newPost = Post::create($data);
+        $newPost = new Post();
 
-        $newPost->user_id = Auth::id();
+        $newPost->fill($data);
 
+        $newPost->castegory->associate(
+            Category::firstOrCreate(
+                ['name'=> $data['category']],
+                ['slug'=> Str::slug($data['category'], '-')],
+                ['description'=> '']
+            )
+        );
     }
 
     /**

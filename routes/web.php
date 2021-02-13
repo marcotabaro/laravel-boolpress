@@ -25,11 +25,4 @@ Auth::routes();
 
     Route::get('restricted-zone/hello', 'TestController@logged');
     Route::get('free-zone/hello', 'TestController@guest');
-    Route::resource('posts', 'PostController')->only(['store', 'update'])->middleware('auth');
-    Route::resource('posts', 'PostController')->except(['store', 'update']);
-
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('posts', 'PostController');
