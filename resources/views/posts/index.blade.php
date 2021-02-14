@@ -7,7 +7,6 @@
             <th>Post Title</th>
             <th>Post Author</th>
             <th>Post Category</th>
-            <th>Post Information</th>
             <th>Tags</th>
         </tr>
     </thead>
@@ -16,7 +15,7 @@
         @foreach($posts as $post)
         <tr>
             <td>{{ $post->title }}</td>
-            <td>{{ $post->author }}</td>
+            <td>{{ $post->user->name }}</td>
             <td>{{ $post->category->title }}</td>
             <td>
                 @foreach ($post->tags as $tag)
@@ -26,7 +25,7 @@
             <td>
                 <a href="{{ route('posts.show', $post) }}">Details</a>
             </td>
-            <td><a href="{{ route('posts.edit', $post) }}">Aggiorna</a></td>
+            {{-- <td><a href="{{ route('posts.edit', $post) }}">Aggiorna</a></td> --}}
         </tr>
         @endforeach
     </tbody>

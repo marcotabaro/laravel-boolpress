@@ -3,6 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Model;
+use App\Post;
 use App\Tag;
 use Faker\Generator as Faker;
 
