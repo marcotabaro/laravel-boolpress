@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Tag;
+use App\Post;
 
 class TagSeeder extends Seeder
 {

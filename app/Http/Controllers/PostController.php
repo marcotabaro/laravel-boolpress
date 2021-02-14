@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 use App\Http\Requests\PostRequest;
 use App\Post;
 use App\Category;
+use App\Tag;
+use App\User;
 
 
 
@@ -22,7 +24,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+
+
+        return view('posts.index', compact('posts'));
     }
 
     /**
