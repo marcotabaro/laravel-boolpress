@@ -11,6 +11,10 @@ class TagSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Tag::class, 25)->create()->each(
+            function ($el) {
+                $el->save();
+            }
+        );
     }
 }
